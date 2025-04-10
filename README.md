@@ -20,7 +20,7 @@ For information on data models and to view the entire DAG check out our dbt [Doc
 ## ✅ How to get started
 
 ### Pre-requisites
-1. You have [dbt](https://www.getdbt.com/) installed and configured (i.e. connected to your data warehouse). If you have not installed dbt, [here](https://docs.getdbt.com/dbt-cli/installation) are instructions for doing so.
+1. You have [dbt](https://www.getdbt.com/) installed and configured (i.e. connected to your data warehouse). If you have not installed dbt, [here](https://docs.getdbt.com/dbt-cli/installation) are instructions for doing so. Note that the demo project requires dbt version 1.8.6 or later.
 2. You have created a database for the output of this project to be written in your data warehouse.
 
 ### Getting Started

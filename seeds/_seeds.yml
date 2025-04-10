@@ -6,7 +6,7 @@ seeds:
       schema: input_layer
       tags: tuva_demo
       column_types:
-        patient_id: |
+        person_id: |
           {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
         member_id: |
           {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
@@ -33,6 +33,10 @@ seeds:
           {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
         medicare_status_code: |
           {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
+        group_id: |
+          {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
+        group_name: |
+          {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
         first_name: |
           {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
         last_name: |
@@ -55,6 +59,7 @@ seeds:
           {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
         file_name: |
           {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
+        file_date: date
         ingest_datetime: | 
           {%- if target.type in ("postgres", "databricks") -%} timestamp 
           {%- elif target.type == "fabric" -%} datetime2(6)
@@ -66,6 +71,8 @@ seeds:
       tags: tuva_demo
       column_types:
         lab_result_id: |
+          {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
+        person_id: |
           {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
         patient_id: |
           {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
@@ -134,7 +141,7 @@ seeds:
         claim_line_number: integer
         claim_type: |
           {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
-        patient_id: |
+        person_id: |
           {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
         member_id: |
           {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
@@ -158,9 +165,9 @@ seeds:
           {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
         bill_type_code: |
           {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
-        ms_drg_code: |
+        drg_code_type: |
           {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
-        apr_drg_code: |
+        drg_code: |
           {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
         revenue_center_code: |
           {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
@@ -379,6 +386,7 @@ seeds:
           {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
         file_name: |
           {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
+        file_date: date
         ingest_datetime: |
           {%- if target.type in ("postgres", "databricks") -%} timestamp 
           {%- elif target.type == "fabric" -%} datetime2(6)
@@ -390,6 +398,8 @@ seeds:
       tags: tuva_demo
       column_types:
         observation_id: |
+          {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
+        person_id: |
           {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
         patient_id: |
           {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
@@ -443,7 +453,7 @@ seeds:
         claim_id: |
           {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
         claim_line_number: integer
-        patient_id: |
+        person_id: |
           {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
         member_id: |
           {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
@@ -473,6 +483,7 @@ seeds:
           {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
         file_name: |
           {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
+        file_date: date
         ingest_datetime: |
           {%- if target.type in ("postgres", "databricks") -%} timestamp 
           {%- elif target.type == "fabric" -%} datetime2(6)
@@ -483,6 +494,8 @@ seeds:
       schema: input_layer
       tags: tuva_demo
       column_types:
+        person_id: |
+          {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
         patient_id: |
           {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
         year_month: |

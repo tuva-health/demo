@@ -1,0 +1,51 @@
+name: weekly_dbt_v1.8.6_snowflake_prod_build_full_refresh
+
+on:
+  workflow_dispatch:
+  schedule:
+    # This job will run at midnight on Fridays
+    - cron: '0 0 * * SAT'
+
+env:
+  DBT_SNOWFLAKE_PROD_ACCOUNT: ${{ secrets.DBT_SNOWFLAKE_PROD_ACCOUNT }}
+  DBT_SNOWFLAKE_PROD_USER: ${{ secrets.DBT_SNOWFLAKE_PROD_USER }}
+  DBT_SNOWFLAKE_PROD_PASSWORD: ${{ secrets.DBT_SNOWFLAKE_PROD_PASSWORD }}
+  DBT_SNOWFLAKE_PROD_DATABASE: ${{ secrets.DBT_SNOWFLAKE_PROD_DATABASE }}
+  DBT_SNOWFLAKE_PROD_ROLE: ${{ secrets.DBT_SNOWFLAKE_PROD_ROLE }}
+  DBT_SNOWFLAKE_PROD_SCHEMA: ${{ secrets.DBT_SNOWFLAKE_PROD_SCHEMA }}
+  DBT_SNOWFLAKE_PROD_WAREHOUSE: ${{ secrets.DBT_SNOWFLAKE_PROD_WAREHOUSE }}
+
+jobs:
+  action:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dbt-core and Snowflake adapter
+        run: |
+          python -m pip install --upgrade pip
+          pip install dbt-core==1.8.6 dbt-snowflake        
+
+      - name: dbt-deps
+        run: dbt deps --profiles-dir ./profiles/snowflake_prod
+        working-directory: integration_tests
+
+      - name: dbt-debug
+        run: dbt debug --profiles-dir ./profiles/snowflake_prod
+        working-directory: integration_tests
+
+      - name: dbt-build
+        run: |
+          dbt build --full-refresh --profiles-dir ./profiles/snowflake_prod
+        working-directory: integration_tests
+
+      - name: Get the result
+        if: ${{ always() }}
+        run: echo "${{ steps.dbt-build.outputs.result }}"
+        shell: bash

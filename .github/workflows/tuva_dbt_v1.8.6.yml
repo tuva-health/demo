@@ -10,7 +10,7 @@ env:
 
 #######  Secrets #######
 #######  BigQuery
-  DBT_BIGQUERY_TOKEN: ${{ secrets.DBT_BIGQUERY_DEMO_TOKEN }}
+  DBT_BIGQUERY_DEMO_TOKEN: ${{ secrets.DBT_BIGQUERY_DEMO_TOKEN }}
   DBT_BIGQUERY_DEMO_PROJECT: ${{ secrets.DBT_BIGQUERY_DEMO_PROJECT }}
 #######  Fabric
   DBT_FABRIC_CI_HOST: ${{ secrets.DBT_FABRIC_CI_HOST }}
@@ -75,7 +75,7 @@ jobs:
 
       - name: Create BigQuery credentials file
         run: |
-          echo "${{ secrets.DBT_BIGQUERY_TOKEN }}" | base64 --decode > ./creds.json
+          echo "${{ secrets.DBT_BIGQUERY_DEMO_TOKEN }}" | base64 --decode > ./creds.json
 
       - name: dbt-deps
         run: dbt deps --profiles-dir ./integration_tests/profiles/bigquery

@@ -59,13 +59,13 @@ jobs:
 
       - name: Create dbt profiles.yml for BigQuery
         run: |
-          mkdir -p ./profiles/bigquery
+          mkdir -p ./integration_tests/profiles/bigquery
           echo "default:
             outputs:
               dev:
                 type: bigquery
                 method: service-account
-                project: "{{ env_var('DBT_BIGQUERY_DEMO_PROJECT') }}"
+                project: tuva-project-demo
                 keyfile: ./creds.json
                 dataset: connector
                 threads: 8

@@ -1,12 +1,12 @@
 default:
   outputs:
     dev:
-      connect_timeout: 120
+      connect_timeout: 999999
       dbname:  "{{ env_var('DBT_REDSHIFT_DEMO_DATABASE') }}"
       host: "{{ env_var('DBT_REDSHIFT_HOST') }}"
       keepalives_idle: 240
       password: "{{ env_var('DBT_REDSHIFT_CI_PASSWORD') }}"
-      port: "{{ env_var('DBT_REDSHIFT_CI_PORT') }}"
+      port: 5439
       ra3_node: true
       schema: default
       threads: 2

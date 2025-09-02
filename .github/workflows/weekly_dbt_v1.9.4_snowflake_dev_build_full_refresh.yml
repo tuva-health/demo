@@ -1,4 +1,4 @@
-name: weekly_dbt_v1.6.3_snowflake_dev_build_full_refresh
+name: weekly_dbt_v1.9.4_snowflake_dev_build_full_refresh
 
 on:
   workflow_dispatch:
@@ -7,6 +7,9 @@ on:
     - cron: '0 0 * * SAT'
 
 env:
+  PYTHON_VERSION: '3.11'
+
+#######  Secrets #######
   DBT_SNOWFLAKE_DEV_ACCOUNT: ${{ secrets.DBT_SNOWFLAKE_DEV_ACCOUNT }}
   DBT_SNOWFLAKE_DEV_DATABASE: ${{ secrets.DBT_SNOWFLAKE_DEV_DATABASE }}
   DBT_SNOWFLAKE_DEV_CI_PASSWORD: ${{ secrets.DBT_SNOWFLAKE_DEV_CI_PASSWORD }}
@@ -20,22 +23,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install dbt-core and Snowflake adapter
+        run: |
+          python -m pip install --upgrade pip
+          pip install dbt-core==1.9.4 dbt-snowflake
 
       - name: dbt-deps
-        uses: mwhitaker/dbt-action@v1.6.3
-        with:
-          dbt_command: "dbt deps --profiles-dir ./integration_tests/profiles/snowflake_dev --target dev"
+        run: dbt deps --profiles-dir ./integration_tests/profiles/snowflake_dev --target dev
 
       - name: dbt-debug
-        uses: mwhitaker/dbt-action@v1.6.3
-        with:
-          dbt_command: "dbt debug --profiles-dir ./integration_tests/profiles/snowflake_dev --target dev"
+        run: dbt debug --profiles-dir ./integration_tests/profiles/snowflake_dev --target dev
 
       - name: dbt-build
-        uses: mwhitaker/dbt-action@v1.6.3
-        with:
-          dbt_command: "dbt build --full-refresh --profiles-dir ./integration_tests/profiles/snowflake_dev --target dev"
+        run: dbt build --full-refresh --profiles-dir ./integration_tests/profiles/snowflake_dev --target dev
 
       - name: Get the result
         if: ${{ always() }}

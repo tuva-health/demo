@@ -36,13 +36,13 @@ jobs:
           pip install dbt-core==1.9.4 dbt-snowflake
 
       - name: dbt-deps
-        run: dbt deps --profiles-dir ./integration_tests/profiles/snowflake_dev --target dev
+        run: dbt deps --profiles-dir ./integration_tests/profiles/snowflake
 
       - name: dbt-debug
-        run: dbt debug --profiles-dir ./integration_tests/profiles/snowflake_dev --target dev
+        run: dbt debug --profiles-dir ./integration_tests/profiles/snowflake
 
       - name: dbt-build
-        run: dbt build --full-refresh --profiles-dir ./integration_tests/profiles/snowflake_dev --target dev
+        run: dbt build --full-refresh --profiles-dir ./integration_tests/profiles/snowflake
 
       - name: Get the result
         if: ${{ always() }}

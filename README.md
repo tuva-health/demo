@@ -23,7 +23,8 @@ For information on the data models check out our [Docs](https://thetuvaproject.c
 ## ✅ How to get started
 
 ### Pre-requisites
-1. You have [uv](https://docs.astral.sh/uv/getting-started/) installed (a fast Python package manager). Installation is simple and OS-agnostic:
+You only need one thing installed:
+1. [uv](https://docs.astral.sh/uv/getting-started/) - a fast Python package manager. Installation is simple and OS-agnostic:
    ```bash
    curl -LsSf https://astral.sh/uv/install.sh | sh
    ```
@@ -31,11 +32,11 @@ For information on the data models check out our [Docs](https://thetuvaproject.c
    ```powershell
    powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
    ```
-2. You have [dbt](https://www.getdbt.com/) configured and connected to your data warehouse (uv will handle the dbt installation).
-3. You have created a database for the output of this project to be written in your data warehouse.
+
+**Note:** This demo uses DuckDB as the database, so you don't need to configure a connection to an external data warehouse. Everything is configured and ready to go!
 
 ### Getting Started
-Complete the following steps to configure the project to run in your environment.
+Complete the following steps to run the demo:
 
 1. [Clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this repo to your local machine or environment.
 2. In the project directory, install Python dependencies and set up the virtual environment:
@@ -48,10 +49,16 @@ Complete the following steps to configure the project to run in your environment
    # or on Windows:
    .venv\Scripts\activate
    ```
-4. Update the `dbt_project.yml` file:
-   - Add the dbt profile connected to your data warehouse.
-5. Run `dbt deps` to install the Tuva Project package.
-6. Run `dbt build` to run the entire project with the built-in sample data.
+4. Run `dbt deps` to install the Tuva Project package:
+   ```bash
+   dbt deps
+   ```
+5. Run `dbt build` to run the entire project with the built-in sample data:
+   ```bash
+   dbt build
+   ```
+
+The `profiles.yml` file is already included in this repo and pre-configured for DuckDB, so no additional setup is needed!
 
 ### Using uv commands
 You can also run dbt commands directly with `uv run` without activating the virtual environment:

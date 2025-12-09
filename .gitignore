@@ -6,3 +6,11 @@ logs/
 .DS_Store
 dbt_packages/
 package-lock.yml
+
+# DuckDB database files
+*.duckdb
+*.duckdb.wal
+
+# uv
+.venv/
+uv.lock

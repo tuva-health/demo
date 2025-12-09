@@ -11,15 +11,6 @@ To set up the Tuva Project with your own claims data or to better understand wha
 
 For information on the data models check out our [Docs](https://thetuvaproject.com/).
 
-## 🔌 Database Support
-
-- BigQuery
-- Databricks (community supported)
-- DuckDB (community supported)
-- Redshift
-- Snowflake
-- Microsoft Fabric
-
 ## ✅ How to get started
 
 ### Pre-requisites
@@ -66,18 +57,6 @@ You can also run dbt commands directly with `uv run` without activating the virt
 uv run dbt deps
 uv run dbt build
 ```
-
-## 🙋🏻‍♀️ **How is this project maintained and can I contribute?**
-
-### Project Maintenance
-
-The Tuva Project team maintaining this project **only** maintains the latest version of the project. 
-We highly recommend you stay consistent with the latest version.
-
-### Contributions
-
-Have an opinion on the mappings? Notice any bugs when installing and running the project?
-If so, we highly encourage and welcome feedback!  While we work on a formal process in Github, we can be easily reached on our Slack community.
 
 ## 🤝 Community
 

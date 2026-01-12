@@ -30,21 +30,21 @@ You only need one thing installed:
 Complete the following steps to run the demo:
 
 1. [Clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this repo to your local machine or environment.
-2. In the project directory, install Python dependencies and set up the virtual environment:
+1. In the project directory, install Python dependencies and set up the virtual environment:
    ```bash
    uv sync
    ```
-3. Activate the virtual environment:
+1. Activate the virtual environment:
    ```bash
    source .venv/bin/activate  # On macOS/Linux
    # or on Windows:
    .venv\Scripts\activate
    ```
-4. Run `dbt deps` to install the Tuva Project package:
+1. Run `dbt deps` to install the Tuva Project package:
    ```bash
    dbt deps
    ```
-5. Run `dbt build` to run the entire project with the built-in sample data:
+1. Run `dbt build` to run the entire project with the built-in sample data:
    ```bash
    dbt build
    ```

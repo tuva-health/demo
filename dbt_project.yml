@@ -8,7 +8,10 @@ vars:
 
   claims_enabled: true
   clinical_enabled: true
-  provider_attribution_enabled: true
+
+  hedis_measures_enabled: true
+
+  provider_attribution_enabled: false
 
   ## CMS HCC data mart vars
   # Setting the payment year to year needed for the demo data
@@ -34,7 +37,7 @@ seeds:
     appointment:
       +post-hook: "{{ the_tuva_project.load_seed('tuva-public-resources/versioned_tuva_synthetic_data/0.15.0','appointment.csv',headers=true) }}"
     eligibility:
-      +post-hook: "{{ the_tuva_project.load_seed('tuva-public-resources/versioned_tuva_synthetic_data/0.15.0','eligibility.csv',headers=true) }}"
+      +post-hook: "{{ the_tuva_project.load_seed('tuva-public-resources/versioned_tuva_synthetic_data/0.16.0','eligibility.csv',headers=true) }}"
     immunization:
       +post-hook: "{{ the_tuva_project.load_seed('tuva-public-resources/versioned_tuva_synthetic_data/0.15.0','immunization.csv',headers=true) }}"
     lab_result:

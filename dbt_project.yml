@@ -34,7 +34,7 @@ seeds:
     appointment:
       +post-hook: "{{ the_tuva_project.load_seed('tuva-public-resources/versioned_tuva_synthetic_data/0.15.0','appointment.csv',headers=true) }}"
     eligibility:
-      +post-hook: "{{ the_tuva_project.load_seed('tuva-public-resources/versioned_tuva_synthetic_data/0.15.0','eligibility.csv',headers=true) }}"
+      +post-hook: "{{ the_tuva_project.load_seed('tuva-public-resources/versioned_tuva_synthetic_data/0.16.0','eligibility.csv',headers=true) }}"
     immunization:
       +post-hook: "{{ the_tuva_project.load_seed('tuva-public-resources/versioned_tuva_synthetic_data/0.15.0','immunization.csv',headers=true) }}"
     lab_result:

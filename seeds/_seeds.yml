@@ -149,6 +149,11 @@ seeds:
           {%- if target.type in ("postgres", "databricks") -%} timestamp 
           {%- elif target.type == "fabric" -%} datetime2(6)
           {%- else -%} datetime {%- endif -%}
+        hospice_flag: integer
+        institutional_snp_flag: integer
+        long_term_institutional_flag: integer
+        enrollment_status: |
+          {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
 
   - name: immunization
     config:

@@ -9,7 +9,6 @@ vars:
   claims_enabled: true
   clinical_enabled: true
   provider_attribution_enabled: true
-  hedis_measures_enabled: true
 
   ## CMS HCC data mart vars
   # Setting the payment year to year needed for the demo data

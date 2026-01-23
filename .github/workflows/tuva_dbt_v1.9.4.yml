@@ -55,7 +55,7 @@ jobs:
       - name: Install dbt-core and BigQuery adapter
         run: |
           python -m pip install --upgrade pip
-          pip install dbt-core==1.9.4 dbt-bigquery
+          pip install dbt-core==1.10.13 dbt-bigquery
 
       - name: Create dbt profiles.yml for BigQuery
         run: |
@@ -115,7 +115,7 @@ jobs:
       - name: Install dbt-core and Fabric adapter
         run: |
           python -m pip install --upgrade pip
-          pip install dbt-core==1.9.4 dbt-fabric
+          pip install dbt-core==1.10.13 dbt-fabric
 
       - name: dbt-deps
         run: dbt deps --profiles-dir ./integration_tests/profiles/fabric
@@ -147,7 +147,7 @@ jobs:
       - name: Install dbt-core and Redshift adapter
         run: |
           python -m pip install --upgrade pip
-          pip install dbt-core==1.9.4 dbt-redshift
+          pip install dbt-core==1.10.13 dbt-redshift
 
       - name: dbt-deps
         run: dbt deps --profiles-dir ./integration_tests/profiles/redshift
@@ -184,7 +184,7 @@ jobs:
       - name: Install dbt-core and Snowflake adapter
         run: |
           python -m pip install --upgrade pip
-          pip install dbt-core==1.9.4 dbt-snowflake
+          pip install dbt-core==1.10.13 dbt-snowflake
 
       - name: dbt-deps
         run: dbt deps --profiles-dir ./integration_tests/profiles/snowflake

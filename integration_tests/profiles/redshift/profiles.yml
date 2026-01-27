@@ -1,15 +1,14 @@
-default:
+default: # Replace with your project name
+  target: ci
   outputs:
-    dev:
-      connect_timeout: 999999
-      dbname:  "{{ env_var('DBT_REDSHIFT_DEMO_DATABASE') }}"
-      host: "{{ env_var('DBT_REDSHIFT_HOST') }}"
-      keepalives_idle: 240
-      password: "{{ env_var('DBT_REDSHIFT_CI_PASSWORD') }}"
-      port: 5439
-      ra3_node: true
-      schema: default
-      threads: 2
+    ci:
       type: redshift
-      user: "{{ env_var('DBT_REDSHIFT_CI_USER') }}"
-  target: dev
+      host: "{{ env_var('REDSHIFT_HOST') }}"
+      user: "{{ env_var('REDSHIFT_USER') }}"
+      password: "{{ env_var('REDSHIFT_PASSWORD') }}"
+      port: 5439
+      dbname: "{{ env_var('REDSHIFT_DB') }}"
+      schema: public
+      threads: 4
+      keepalives_idle: 240
+      connect_timeout: 10

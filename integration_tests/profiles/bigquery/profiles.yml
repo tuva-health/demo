@@ -1,13 +1,13 @@
 default:
-  target: dev
+  target: ci
   outputs:
-    dev:
+    ci:
       type: bigquery
       method: service-account
-      keyfile: "{{ env_var('DBT_BIGQUERY_DEMO_TOKEN') }}"
-      project: "{{ env_var('DBT_BIGQUERY_DEMO_PROJECT') }}"
+      project: dev-ci-testing
+      keyfile: ./creds.json
       dataset: connector
-      threads: 4
+      threads: 8
       timeout_seconds: 300
       location: US
       priority: interactive

@@ -1,0 +1,9 @@
+default:
+  target: ci
+  outputs:
+    ci:
+      type: duckdb
+      path: "${{ env_var('MOTHERDUCK_PATH') }}"
+      threads: 4
+      settings:
+        custom_user_agent: 'dbt-ci'

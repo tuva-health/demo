@@ -15,11 +15,10 @@ jobs:
       DBT_PROJECT_DIR: "."
       DBT_CORE_VERSION: "1.10.15"
       # Databricks connection variables
-      DATABRICKS_HOST: ${{ secrets.DBT_DATABRICKS_HOST }}
-      DATABRICKS_HTTP_PATH: ${{ secrets.DBT_DATABRICKS_HTTP_PATH }}
-      DATABRICKS_TOKEN: ${{ secrets.DBT_DATABRICKS_TOKEN }}
-      DATABRICKS_CATALOG: ${{ secrets.DBT_DATABRICKS_CATALOG }}
-      SCHEMA_SUFFIX: ${{ github.run_id }}
+      DBT_DATABRICKS_CI_HOST: ${{ secrets.DBT_DATABRICKS_CI_HOST }}
+      DBT_DATABRICKS_CI_HTTP_PATH: ${{ secrets.DBT_DATABRICKS_CI_HTTP_PATH }}
+      DBT_DATABRICKS_CI_TOKEN: ${{ secrets.DBT_DATABRICKS_CI_TOKEN }}
+      DBT_DATABRICKS_CI_CATALOG: ${{ secrets.DBT_DATABRICKS_CI_CATALOG }}
 
     steps:
       - uses: actions/checkout@v4

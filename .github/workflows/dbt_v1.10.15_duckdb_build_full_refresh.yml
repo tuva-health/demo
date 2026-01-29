@@ -17,9 +17,9 @@ jobs:
       DBT_CORE_VERSION: "1.10.15"
       
       # Connection variables
-      MOTHERDUCK_TOKEN: ${{ secrets.DBT_MOTHERDUCK_TOKEN }}
-      MOTHERDUCK_DB_NAME: "my_db"
-      MOTHERDUCK_PATH: "md:${{ env.MOTHERDUCK_DB_NAME }}?motherduck_token=${{ env.MOTHERDUCK_TOKEN }}"
+      DBT_MOTHERDUCK_CI_TOKEN: ${{ secrets.DBT_MOTHERDUCK_CI_TOKEN }}
+      DBT_MOTHERDUCK_CI_DATABASE: "my_db"
+      DBT_MOTHERDUCK_CI_PATH: "md:${{ env.DBT_MOTHERDUCK_CI_DATABASE }}?motherduck_token=${{ env.DBT_MOTHERDUCK_CI_TOKEN }}"
 
     steps:
       - name: Checkout Code

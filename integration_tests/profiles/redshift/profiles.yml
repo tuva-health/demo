@@ -7,9 +7,6 @@ default:
       user: "{{ env_var('DBT_REDSHIFT_CI_USER') }}"
       password: "{{ env_var('DBT_REDSHIFT_CI_PASSWORD') }}"
       dbname: "{{ env_var('DBT_REDSHIFT_CI_DATABASE') }}"
-      schema: "{{ env_var('DBT_REDSHIFT_CI_SCHEMA') }}"
-      keepalives_idle: 240
-      connect_timeout: 120
+      schema: public
       port: 5439
-      ra3_node: true
-      threads: 2
+      threads: 4

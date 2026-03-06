@@ -210,6 +210,7 @@ seeds:
     config:
       schema: input_layer
       tags: tuva_demo
+      batch_size: 200
       column_types:
         lab_result_id: |
           {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
@@ -288,6 +289,7 @@ seeds:
     config:
       schema: input_layer
       tags: tuva_demo
+      batch_size: 200
       column_types:
         claim_id: |
           {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}

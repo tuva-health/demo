@@ -44,6 +44,10 @@ jobs:
         working-directory: ${{ env.DBT_PROJECT_DIR }}
         run: dbt debug --profiles-dir ./integration_tests/profiles/redshift
 
+      - name: Seed dbt data
+        working-directory: ${{ env.DBT_PROJECT_DIR }}
+        run: dbt seed --full-refresh --threads 1 --profiles-dir ./integration_tests/profiles/redshift
+
       - name: Build dbt models
         working-directory: ${{ env.DBT_PROJECT_DIR }}
-        run: dbt build --full-refresh --profiles-dir ./integration_tests/profiles/redshift
+        run: dbt build --full-refresh --exclude resource_type:seed --profiles-dir ./integration_tests/profiles/redshift

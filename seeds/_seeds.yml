@@ -149,12 +149,12 @@ seeds:
           {%- if target.type in ("postgres", "databricks") -%} timestamp 
           {%- elif target.type == "fabric" -%} datetime2(6)
           {%- else -%} datetime {%- endif -%}
+        enrollment_status: |
+          {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
         hospice_flag: integer
         institutional_snp_flag: integer
         long_term_institutional_flag: integer
-        enrollment_status: |
-          {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
-
+ 
   - name: immunization
     config:
       schema: input_layer
@@ -210,6 +210,7 @@ seeds:
     config:
       schema: input_layer
       tags: tuva_demo
+      batch_size: 200
       column_types:
         lab_result_id: |
           {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}
@@ -288,6 +289,7 @@ seeds:
     config:
       schema: input_layer
       tags: tuva_demo
+      batch_size: 221
       column_types:
         claim_id: |
           {%- if target.type in ("bigquery", "databricks") -%} string {%- else -%} varchar(255) {%- endif -%}

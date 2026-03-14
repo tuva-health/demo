@@ -31,6 +31,18 @@ eligibility as (
         , member_id
         , payer
         , {{ the_tuva_project.quote_column('plan') }} as plan_name
+        {% if target.type == 'fabric' %}
+        , cast(
+            year(enrollment_start_date) * 100
+            + month(enrollment_start_date)
+            as {{ dbt.type_int() }}
+          ) as enrollment_start_year_month
+        , cast(
+            year(enrollment_end_date) * 100
+            + month(enrollment_end_date)
+            as {{ dbt.type_int() }}
+          ) as enrollment_end_year_month
+        {% else %}
         , cast(
             extract(year from enrollment_start_date) * 100
             + extract(month from enrollment_start_date)
@@ -41,6 +53,7 @@ eligibility as (
             + extract(month from enrollment_end_date)
             as {{ dbt.type_int() }}
           ) as enrollment_end_year_month
+        {% endif %}
     from {{ ref('eligibility') }}
 
 ),

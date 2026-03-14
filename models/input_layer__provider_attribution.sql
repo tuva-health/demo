@@ -20,7 +20,7 @@ with raw_provider_attribution as (
         , custom_attributed_provider_practice
         , custom_attributed_provider_organization
         , custom_attributed_provider_lob
-    from {{ ref('provider_attribution') }}
+    from {{ ref('provider_attribution_source') }}
 
 ),
 

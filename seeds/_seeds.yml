@@ -642,7 +642,7 @@ seeds:
           {%- elif target.type == "fabric" -%} datetime2(6)
           {%- else -%} datetime {%- endif -%}
 
-  - name: provider_attribution
+  - name: provider_attribution_seed
     config:
       schema: input_layer
       tags: tuva_demo

@@ -16,6 +16,7 @@ on:
       - main
     types:
       - opened
+      - synchronize
   workflow_dispatch:
     inputs:
       pr_number:
@@ -138,12 +139,28 @@ jobs:
             });
             const changed = files.map((f) => f.filename);
 
+            const ciBootstrapPrefixes = [".github/workflows/", "macros/ci/"];
+
             const runGuardPrefixes = ["seeds/"];
             const runGuardExact = new Set([
               "dbt_project.yml",
               "packages.yml",
               "seeds/_seeds.yml"
             ]);
+
+            if (!isDispatch) {
+              operation = "run";
+              target = "snowflake";
+
+              const requiresCiBootstrap = changed.some((path) =>
+                ciBootstrapPrefixes.some((prefix) => path.startsWith(prefix))
+              );
+
+              if (requiresCiBootstrap) {
+                operation = "build";
+                target = "all";
+              }
+            }
 
             const requiresBuild = changed.some(
               (path) =>

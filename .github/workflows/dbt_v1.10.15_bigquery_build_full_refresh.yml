@@ -5,6 +5,10 @@ on:
       - main
   workflow_dispatch: # Allows manual trigger from UI
 
+concurrency:
+  group: bigquery-ci-testing
+  cancel-in-progress: false
+
 jobs:
   dbt_run:
     name: dbt full refresh and test on BigQuery

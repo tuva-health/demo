@@ -32,7 +32,7 @@ jobs:
       - name: Install dbt-core and DuckDB adapter
         run: |
           python -m pip install --upgrade pip
-          pip install dbt-core==${{ env.DBT_CORE_VERSION}} dbt-duckdb
+          pip install dbt-core==${{ env.DBT_CORE_VERSION}} "dbt-duckdb[md]"
 
       - name: Install dbt dependencies
         run: dbt deps --profiles-dir ./integration_tests/profiles/duckdb

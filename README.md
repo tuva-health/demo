@@ -24,6 +24,6 @@ The project officially supports the following data warehouses:
 Complete the following steps to configure the project to run in your environment.
 
 1. [Clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this repo to your local machine or environment.
-2. Update the `dbt_project.yml` file i.e. add the dbt profile connected to your data warehouse.
+2. Connect your project to your warehouse by updating the `dbt_project.yml`. You can use `dbt init` to be walked through these steps. 
 3. Run `dbt deps` to install the Tuva Project package. 
 4. Run `dbt build` to run the entire project with the built-in sample data.
